@@ -1,0 +1,2218 @@
+{
+	"info": {
+		"_postman_id": "0b3fcd23-d612-4aeb-a7f2-c64de202e52e",
+		"name": "Sea Pidilite v2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41641985"
+	},
+	"item": [
+		{
+			"name": "Common",
+			"item": [
+				{
+					"name": "oauth/token/generate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"if (jsonData.data && jsonData.data.accessToken) {\r",
+									"    pm.environment.set(\"accessToken\", jsonData.data.accessToken);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"kCoNHEVIsD7UwMXHXxmcKBeqL\",\n  \"secret\": \"JGVJD3meQVyU2nUZO8j0ULAItdXICr8eBVHzGA7y\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apac.intouch.capillarytech.com/v3/oauth/token/generate",
+							"protocol": "https",
+							"host": [
+								"apac",
+								"intouch",
+								"capillarytech",
+								"com"
+							],
+							"path": [
+								"v3",
+								"oauth",
+								"token",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "barcode/status-summary",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{CLIENT_API_KEY}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "fnb",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/barcode/status-summary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"barcode",
+								"status-summary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "B2C",
+			"item": [
+				{
+					"name": "B2C_customerget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customerget?mobile=7507772230&orgids=2274",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customerget"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json",
+									"disabled": true
+								},
+								{
+									"key": "transactions",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "pointssummary",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "points_breakup",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "promotion_points",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "mlp",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "mobile",
+									"value": "7507772230"
+								},
+								{
+									"key": "orgids",
+									"value": "2274"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_orgdetailsget",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzEwNjcyMTksImp0aSI6Inl1VGI2VGtqUm1rOE5Vd0YzaWNhMGciLCJpYXQiOjE3MzEwNjM2NzksInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.ns7lvj_6ksHh3mBLpjTc8BJub9DOdk9Pt2otvdkT5JRXWt2rzxxro-mFB_FfS4UT3P7oN1lD5QhryU1hmeYbjn0_U3Fbjr2CxnxX8g5wrcdWGZW5pUUqvEgJB1dvCbdcq8taWwRTj7oJ0NOGNUQFIjETRrFD8CY6RV1MHn3HnzWijR8mG6qaE2vjixlZuqXKdRtziTn8eq466PnH61Q0uw1udXc3-DYPAbJLxAlwXoAGcOLXMICL0aSwR3_y4anTxRTeWbcsWado3NmTarSZm8pPBqMEUcapcccm3RBsis3Mwat7UmYKa6Gr0wVg79Fl-wfOAwsOS2auJ_thUQHJTg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orgdetailsget?mobile=7507772230",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orgdetailsget"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "7507772230"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Customer/transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "qqweyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzAxMDg4ODAsImp0aSI6InY3ek91X2hGTnZsSUdSOE16YTY1anciLCJpYXQiOjE3MzAxMDUzNDAsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.QLaev3ba6Z2tSuQmX_GAsn_SGV6l3BltPIIyMDEMbhhwtZlXPPotuKQ3-YZx9o6S-T9jgt94bUIrbHdP5gWsid5UvpxdJ0wmoHP9nqb04NzGKVF-YuDFCUJEVEVdt96HwZ82a0ImGgSLCb9-zDRoNBRaXTHNh3ZFn0KRRd0h-pYN3_qBk64aZeUIqu_tVDCNDKAUcifFuoyC5qHpgiENM0zlRJL-u4qHgSkWeUuC7A9nTfUet95h1MfP_bdgvmRb8eEcKMtogFK_h1NkX-xn1MrucsvmB15jO3XRqPNNIVXtuzLm3u_WCst4hxQuggaCVEpTCfe69u7MS2CsuCOumg",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/transactions?orgids=2274&mobile=7507772230",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "orgids",
+									"value": "2274"
+								},
+								{
+									"key": "mobile",
+									"value": "7507772230"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Customer/redemptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0MzM4MjEsImp0aSI6IkZ0SHFyaER0a1RoSmVLVjAyY195Z3ciLCJpYXQiOjE3MzE0MzAyODEsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.jPwO8FS6vvbd3lkRPV6NSUwVvpcwGA-q_As2WrDOjRXp7KWiMut4EwEUHBbnYVphOxh4d-AHtgRlxEZlvhB49ekUzCbyFBnE87KwWA45SO0bu9kJVqfbLZwe1EhLSwWTO-AjCMznC9lFIFSk-0ZHIKiOn8N6vgh4cZSc7sXaGd0-Z0BeTMORQ7D-L0Wy5A6ZAWEsOJT5JrVvSer5eFs22yGhuQPfr6dDqwzDT8oEsUNjvydQZg8YN6pq2UOEPA8g4zVZMm6QX8BKBTsJjr7drChng1xEiEbtvGzrB_rjiaspVUf8XzGEWZHDjmXt_tmOe7MXenZhEwnfs7v9ZVELgw",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT=123eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/redemptions?mobile=918767543986&orgids=2190,2274,2275,2276,2277,2278",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"redemptions"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json",
+									"disabled": true
+								},
+								{
+									"key": "mobile",
+									"value": "918767543986"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,2274,2275,2276,2277,2278"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Customer/Lookup",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0MzM4MjEsImp0aSI6IkZ0SHFyaER0a1RoSmVLVjAyY195Z3ciLCJpYXQiOjE3MzE0MzAyODEsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.jPwO8FS6vvbd3lkRPV6NSUwVvpcwGA-q_As2WrDOjRXp7KWiMut4EwEUHBbnYVphOxh4d-AHtgRlxEZlvhB49ekUzCbyFBnE87KwWA45SO0bu9kJVqfbLZwe1EhLSwWTO-AjCMznC9lFIFSk-0ZHIKiOn8N6vgh4cZSc7sXaGd0-Z0BeTMORQ7D-L0Wy5A6ZAWEsOJT5JrVvSer5eFs22yGhuQPfr6dDqwzDT8oEsUNjvydQZg8YN6pq2UOEPA8g4zVZMm6QX8BKBTsJjr7drChng1xEiEbtvGzrB_rjiaspVUf8XzGEWZHDjmXt_tmOe7MXenZhEwnfs7v9ZVELgw",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/Lookup?mobile=9605134141&orgids=2190,123,2275,2274&format=json&source=INSTORE&embed=customerStatus",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"Lookup"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134141"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,123,2275,2274"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "source",
+									"value": "INSTORE"
+								},
+								{
+									"key": "embed",
+									"value": "customerStatus"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Points/isredeemable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzExNDYwMTksImlhdCI6MTczMTA1OTYyMCwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.jIjF_Ruop6fp9RMj24VNmv1c8xweGwN4wUtBW6GN514; OID=2276",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "1eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzEwNjg0MTAsImp0aSI6IjlORkR0WGZtdFluN0dESGp4VUE3Y2ciLCJpYXQiOjE3MzEwNjQ4NzAsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.aeRIcu5ek4PELGsKMOVafT-fo4HGHJXSXt4gvDtLELNjHQ4hpQM4nBzMTRfxRCQEh1GmSkJvDdpav1EXnQMdYTlf5d15Ht0PbjGfnf0_N4Dm4eFQuH27Kxf3DX1pHAPrPICaLur4feEQB3U06UzPwEzf-VXSgn9XGlRrdPn0cxyDkoZRdX7Ln9QtsEbeUKphl8v-dloZh_R511fBWwWBWbJyn1vYivSttjcbqGmkPB8Q-DBG59X5XDaE9e-cY8WdQwZj9l2OySLTMjCp6BYDexOELq2Sc7tP0hcoMYwJkKxsYSOeAgoCG-PsjbCp8wOglPlOZdbJ4o5VxLBFXwu_5Q",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/isredeemable?mobile=9738104516",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"isredeemable"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9738104516"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Points/redeem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzAxMDg4ODAsImp0aSI6InY3ek91X2hGTnZsSUdSOE16YTY1anciLCJpYXQiOjE3MzAxMDUzNDAsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.QLaev3ba6Z2tSuQmX_GAsn_SGV6l3BltPIIyMDEMbhhwtZlXPPotuKQ3-YZx9o6S-T9jgt94bUIrbHdP5gWsid5UvpxdJ0wmoHP9nqb04NzGKVF-YuDFCUJEVEVdt96HwZ82a0ImGgSLCb9-zDRoNBRaXTHNh3ZFn0KRRd0h-pYN3_qBk64aZeUIqu_tVDCNDKAUcifFuoyC5qHpgiENM0zlRJL-u4qHgSkWeUuC7A9nTfUet95h1MfP_bdgvmRb8eEcKMtogFK_h1NkX-xn1MrucsvmB15jO3XRqPNNIVXtuzLm3u_WCst4hxQuggaCVEpTCfe69u7MS2CsuCOumg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pointredeem\": [\r\n    {\r\n      \"mobile\": \"919738104156\",\r\n      \"orgid\": \"2190\",\r\n      \"points\": \"18\",\r\n      \"transaction_number\": \"sa1\"\r\n    },\r\n    {\r\n      \"mobile\": \"919738104156\",\r\n      \"orgid\": \"67890\",\r\n      \"points\": \"18\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/redeem",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"redeem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Points/reverse?mobile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzAxMDg4ODAsImp0aSI6InY3ek91X2hGTnZsSUdSOE16YTY1anciLCJpYXQiOjE3MzAxMDUzNDAsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.QLaev3ba6Z2tSuQmX_GAsn_SGV6l3BltPIIyMDEMbhhwtZlXPPotuKQ3-YZx9o6S-T9jgt94bUIrbHdP5gWsid5UvpxdJ0wmoHP9nqb04NzGKVF-YuDFCUJEVEVdt96HwZ82a0ImGgSLCb9-zDRoNBRaXTHNh3ZFn0KRRd0h-pYN3_qBk64aZeUIqu_tVDCNDKAUcifFuoyC5qHpgiENM0zlRJL-u4qHgSkWeUuC7A9nTfUet95h1MfP_bdgvmRb8eEcKMtogFK_h1NkX-xn1MrucsvmB15jO3XRqPNNIVXtuzLm3u_WCst4hxQuggaCVEpTCfe69u7MS2CsuCOumg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pointreverse\": [\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"pointsToBeReversed\": \"18\",\r\n      \"redemptionId\": \"111ddg77A\"\r\n    },\r\n    {\r\n      \"orgid\": \"67810\",\r\n      \"pointsToBeReversed\": \"18\",\r\n      \"redemptionId\": \"111ddg77A\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/reverse?mobile=919738104156",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"reverse"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "919738104156"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Transaction/add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzAxMDg4ODAsImp0aSI6InY3ek91X2hGTnZsSUdSOE16YTY1anciLCJpYXQiOjE3MzAxMDUzNDAsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.QLaev3ba6Z2tSuQmX_GAsn_SGV6l3BltPIIyMDEMbhhwtZlXPPotuKQ3-YZx9o6S-T9jgt94bUIrbHdP5gWsid5UvpxdJ0wmoHP9nqb04NzGKVF-YuDFCUJEVEVdt96HwZ82a0ImGgSLCb9-zDRoNBRaXTHNh3ZFn0KRRd0h-pYN3_qBk64aZeUIqu_tVDCNDKAUcifFuoyC5qHpgiENM0zlRJL-u4qHgSkWeUuC7A9nTfUet95h1MfP_bdgvmRb8eEcKMtogFK_h1NkX-xn1MrucsvmB15jO3XRqPNNIVXtuzLm3u_WCst4hxQuggaCVEpTCfe69u7MS2CsuCOumg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"root\": {\r\n    \"transaction\": [\r\n      {\r\n        \"type\": \"regular\",\r\n        \"number\": \"20241016_001\",\r\n        \"amount\": 70,\r\n        \"billing_time\": \"2024-10-16T14:09:34+05:30\",\r\n        \"gross_amount\": 70,\r\n        \"outlier_status\": \"NORMAL\",\r\n        \"discount\": 0,\r\n        \"customer\": {\r\n          \"mobile\": \"919738104516\"\r\n        },\r\n        \"custom_fields\": {\r\n          \"field\": [\r\n            {\r\n              \"name\": \"source\",\r\n              \"value\": \"FCC\"\r\n            }\r\n          ]\r\n        },\r\n        \"line_items\": {\r\n          \"line_item\": [\r\n            {\r\n              \"serial\": \"1\",\r\n              \"amount\": \"10\",\r\n              \"item_code\": \"1\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"2\",\r\n              \"amount\": \"35\",\r\n              \"item_code\": \"2\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"3\",\r\n              \"amount\": \"25\",\r\n              \"item_code\": \"3\",\r\n              \"qty\": \"1\"\r\n            }\r\n          ]\r\n        },\r\n        \"redemptions\": {\r\n          \"points_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          },\r\n          \"coupon_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/transaction/add?orgids=2308",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"add"
+							],
+							"query": [
+								{
+									"key": "orgids",
+									"value": "2308"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2C_Transaction/update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2C_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzAxMDg4ODAsImp0aSI6InY3ek91X2hGTnZsSUdSOE16YTY1anciLCJpYXQiOjE3MzAxMDUzNDAsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.QLaev3ba6Z2tSuQmX_GAsn_SGV6l3BltPIIyMDEMbhhwtZlXPPotuKQ3-YZx9o6S-T9jgt94bUIrbHdP5gWsid5UvpxdJ0wmoHP9nqb04NzGKVF-YuDFCUJEVEVdt96HwZ82a0ImGgSLCb9-zDRoNBRaXTHNh3ZFn0KRRd0h-pYN3_qBk64aZeUIqu_tVDCNDKAUcifFuoyC5qHpgiENM0zlRJL-u4qHgSkWeUuC7A9nTfUet95h1MfP_bdgvmRb8eEcKMtogFK_h1NkX-xn1MrucsvmB15jO3XRqPNNIVXtuzLm3u_WCst4hxQuggaCVEpTCfe69u7MS2CsuCOumg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"root\": {\r\n    \"transaction\": [\r\n      {\r\n        \"type\": \"regular\",\r\n        \"number\": \"12s\",\r\n        \"customer\": {\r\n          \"mobile\": \"919994000008\"\r\n        },\r\n        \"custom_fields\": {\r\n          \"field\": [\r\n            {\r\n              \"name\": \"source\",\r\n              \"value\": \"FCC123\"\r\n            },\r\n            {\r\n              \"name\": \"delivered_date\",\r\n              \"value\": \"2024-10-24\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/transaction/update?orgids=2190,2274,2275",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"update"
+							],
+							"query": [
+								{
+									"key": "orgids",
+									"value": "2190,2274,2275"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "B2B",
+			"item": [
+				{
+					"name": "B2B_Customerget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customerget?mobile=9605134141&orgids=2190,2275,2274,2276,2277,2278&format=json&transactions=true&pointssummary=true&points_breakup=true&promotion_points=true&mlp=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customerget"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134141"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,2275,2274,2276,2277,2278"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "transactions",
+									"value": "true"
+								},
+								{
+									"key": "pointssummary",
+									"value": "true"
+								},
+								{
+									"key": "points_breakup",
+									"value": "true"
+								},
+								{
+									"key": "promotion_points",
+									"value": "true"
+								},
+								{
+									"key": "mlp",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_Orgdetailsget",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orgdetailsget?mobile=9381187534",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orgdetailsget"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9381187534"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/transactions?mobile=8767543986&format=json&limit=10&orgids=2309",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "8767543986"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "orgids",
+									"value": "2309"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_Customer/redemptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "CT=123eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/redemptions?format=json&mobile=918767543986&orgids=2307&limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"redemptions"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "mobile",
+									"value": "918767543986"
+								},
+								{
+									"key": "orgids",
+									"value": "2307"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_Customer/Lookup",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/Lookup?mobile=9605134141&orgids=2190,123,2275,2274&format=json&source=INSTORE&embed=customerStatus",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"Lookup"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134141"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,123,2275,2274"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "source",
+									"value": "INSTORE"
+								},
+								{
+									"key": "embed",
+									"value": "customerStatus"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_Points/isredeemable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzExNDYwMTksImlhdCI6MTczMTA1OTYyMCwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.jIjF_Ruop6fp9RMj24VNmv1c8xweGwN4wUtBW6GN514; OID=2276",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/isredeemable?mobile=9605134142",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"isredeemable"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134142"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_points/redeem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pointredeem\": [\r\n    {\r\n      \"mobile\": \"9381187534\",\r\n      \"orgid\": \"2190\",\r\n      \"points\": \"18\",\r\n      \"transaction_number\": \"sa1\"\r\n    },\r\n    {\r\n      \"mobile\": \"919738104156\",\r\n      \"orgid\": \"67890\",\r\n      \"points\": \"18\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/redeem",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"redeem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_points/reverse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pointreverse\": [\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"pointsToBeReversed\": \"18\",\r\n      \"redemptionId\": \"111ddg77A\"\r\n    },\r\n    {\r\n      \"orgid\": \"67810\",\r\n      \"pointsToBeReversed\": \"18\",\r\n      \"redemptionId\": \"111ddg77A\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/reverse?mobile=919738104156",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"reverse"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "919738104156"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_Transaction/add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"root\": {\r\n    \"transaction\": [\r\n      {\r\n        \"type\": \"regular\",\r\n        \"number\": \"20241016_001\",\r\n        \"amount\": 70,\r\n        \"billing_time\": \"2024-10-16T14:09:34+05:30\",\r\n        \"gross_amount\": 70,\r\n        \"outlier_status\": \"NORMAL\",\r\n        \"discount\": 0,\r\n        \"customer\": {\r\n          \"mobile\": \"919738104516\"\r\n        },\r\n        \"custom_fields\": {\r\n          \"field\": [\r\n            {\r\n              \"name\": \"source\",\r\n              \"value\": \"FCC\"\r\n            }\r\n          ]\r\n        },\r\n        \"line_items\": {\r\n          \"line_item\": [\r\n            {\r\n              \"serial\": \"1\",\r\n              \"amount\": \"10\",\r\n              \"item_code\": \"1\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"2\",\r\n              \"amount\": \"35\",\r\n              \"item_code\": \"2\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"3\",\r\n              \"amount\": \"25\",\r\n              \"item_code\": \"3\",\r\n              \"qty\": \"1\"\r\n            }\r\n          ]\r\n        },\r\n        \"redemptions\": {\r\n          \"points_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          },\r\n          \"coupon_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/transaction/add?orgids=2190,777,99093",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"add"
+							],
+							"query": [
+								{
+									"key": "orgids",
+									"value": "2190,777,99093"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "B2B_Transaction/update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{B2B_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"root\": {\r\n    \"transaction\": [\r\n      {\r\n        \"type\": \"regular\",\r\n        \"number\": \"12s\",\r\n        \"customer\": {\r\n          \"mobile\": \"919994000008\"\r\n        },\r\n        \"custom_fields\": {\r\n          \"field\": [\r\n            {\r\n              \"name\": \"source\",\r\n              \"value\": \"FCC123\"\r\n            },\r\n            {\r\n              \"name\": \"delivered_date\",\r\n              \"value\": \"2024-10-24\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/transaction/update?orgids=2190,2274,2275",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"update"
+							],
+							"query": [
+								{
+									"key": "orgids",
+									"value": "2190,2274,2275"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "One View",
+			"item": [
+				{
+					"name": "One_View_customerget",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0ODE2MjQsImp0aSI6IjctZnB6dUlwMFdoMm5tODBVcmJ3WXciLCJpYXQiOjE3MzE0NzgwODQsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.b4Iowvao1_VTGy5pmt_Dcy2wlwJi1jQEp3tFJOVt5wmkDG9zCj1X1HeCUqlwEsdPeu_Dk8p-Tuima2KdXnlHccqXpgUtICTwsiQxVYdmCn4TMulUHeB6ijXrKHtdCPsgB3i2um-YmP-zj8UFFGbu2jRmDFxGqq9m3mKaiwS-f3bHRIUn0otqUIQzUijAX4xXaKZbc6Jh-lQE1FlQLTKmGeNEh9Ykg1NM9uaB7W5-kTmxSMSi8UyYleCdzoLb6_eyllxezPx3psh_LH8BpLVBIrqc3exx8hlzzhff5_3ossYJAIKrF0N5ZcWNSp_Ib0L-uK5O8AsMNYJuimFUmGwi0g",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customerget?mobile=9605134141&orgids=2190,2275,2274,2276,2277,2278&format=json&transactions=true&pointssummary=true&points_breakup=true&promotion_points=true&mlp=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customerget"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134141"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,2275,2274,2276,2277,2278"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "transactions",
+									"value": "true"
+								},
+								{
+									"key": "pointssummary",
+									"value": "true"
+								},
+								{
+									"key": "points_breakup",
+									"value": "true"
+								},
+								{
+									"key": "promotion_points",
+									"value": "true"
+								},
+								{
+									"key": "mlp",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_orgdetailsget?mobile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0ODE2MjQsImp0aSI6IjctZnB6dUlwMFdoMm5tODBVcmJ3WXciLCJpYXQiOjE3MzE0NzgwODQsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.b4Iowvao1_VTGy5pmt_Dcy2wlwJi1jQEp3tFJOVt5wmkDG9zCj1X1HeCUqlwEsdPeu_Dk8p-Tuima2KdXnlHccqXpgUtICTwsiQxVYdmCn4TMulUHeB6ijXrKHtdCPsgB3i2um-YmP-zj8UFFGbu2jRmDFxGqq9m3mKaiwS-f3bHRIUn0otqUIQzUijAX4xXaKZbc6Jh-lQE1FlQLTKmGeNEh9Ykg1NM9uaB7W5-kTmxSMSi8UyYleCdzoLb6_eyllxezPx3psh_LH8BpLVBIrqc3exx8hlzzhff5_3ossYJAIKrF0N5ZcWNSp_Ib0L-uK5O8AsMNYJuimFUmGwi0g",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/orgdetailsget?mobile=9381187534",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orgdetailsget"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9381187534"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_customer/transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0ODg0ODksImp0aSI6IktObG03dTB3OUZ2V21KTExFZ0NWYmciLCJpYXQiOjE3MzE0ODQ5NDksInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.QF_tM6Dcm1yrQ4sWzEoYSA3W1zi5f0xtL8iXk6MWaydSiRGmBIqt_lx8qKkzsR1gunucxxhAZOu6bDxVz9F7zu_zC-JLb7nstgbABkoSARN8Nrb6FIMxc9CvFmyxcfI-fIrI2yj2kIVh3OzsQKI0LP1Hln0Lh6ZCmUG4qVS5CdRMk2NKqGpkR10Dyut07P6Ppmb2oJKzcIITD5VuM739CICSlS872n1maofkbj5cPGBpH_OhgAYYXBGzXeHtZdm1IFTeI1q4OKqKQVna55iPtZwUiLVuGn2hN7gUbIGMygvT3A4rW5pT4dl3rd4-qBfTyJef7xh27zhWUNKsPc-3Kg",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/transactions?mobile=919995000001&format=json&limit=10&orgids=2190,222",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "919995000001"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,222"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_customer/redemptions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "token",
+								"value": "CT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6WyIxNDU2Il0sIm9yZ0lEIjowLCJleHAiOjE3MzEwNjk4NDQsImlhdCI6MTczMDk4MzQ0NSwiaXNzIjoiY2FwaWxsYXJ5dGVjaC5jb20iLCJhdWQiOiJjYXBpbGxhcnksaW50b3VjaCxhcnlhLHJlb24sYXBwcyIsInNvdXJjZSI6IldFQkFQUCIsInJlZmVyZW5jZUlEIjoiMjkyMTAzMiJ9.bUjQ2Ow7dz3ldQrm-BLM-sTtOFujLB5ohnqMBxwQJ6E; OID=2276",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0ODE2MjQsImp0aSI6IjctZnB6dUlwMFdoMm5tODBVcmJ3WXciLCJpYXQiOjE3MzE0NzgwODQsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.b4Iowvao1_VTGy5pmt_Dcy2wlwJi1jQEp3tFJOVt5wmkDG9zCj1X1HeCUqlwEsdPeu_Dk8p-Tuima2KdXnlHccqXpgUtICTwsiQxVYdmCn4TMulUHeB6ijXrKHtdCPsgB3i2um-YmP-zj8UFFGbu2jRmDFxGqq9m3mKaiwS-f3bHRIUn0otqUIQzUijAX4xXaKZbc6Jh-lQE1FlQLTKmGeNEh9Ykg1NM9uaB7W5-kTmxSMSi8UyYleCdzoLb6_eyllxezPx3psh_LH8BpLVBIrqc3exx8hlzzhff5_3ossYJAIKrF0N5ZcWNSp_Ib0L-uK5O8AsMNYJuimFUmGwi0g",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/redemptions?format=json&mobile=919738104516&orgids=2190,222,333&limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"redemptions"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "mobile",
+									"value": "919738104516"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,222,333"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_Customer/Lookup",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0ODE2MjQsImp0aSI6IjctZnB6dUlwMFdoMm5tODBVcmJ3WXciLCJpYXQiOjE3MzE0NzgwODQsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.b4Iowvao1_VTGy5pmt_Dcy2wlwJi1jQEp3tFJOVt5wmkDG9zCj1X1HeCUqlwEsdPeu_Dk8p-Tuima2KdXnlHccqXpgUtICTwsiQxVYdmCn4TMulUHeB6ijXrKHtdCPsgB3i2um-YmP-zj8UFFGbu2jRmDFxGqq9m3mKaiwS-f3bHRIUn0otqUIQzUijAX4xXaKZbc6Jh-lQE1FlQLTKmGeNEh9Ykg1NM9uaB7W5-kTmxSMSi8UyYleCdzoLb6_eyllxezPx3psh_LH8BpLVBIrqc3exx8hlzzhff5_3ossYJAIKrF0N5ZcWNSp_Ib0L-uK5O8AsMNYJuimFUmGwi0g",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/customer/Lookup?mobile=9605134141&orgids=2190,123,2275,2274&format=json&source=INSTORE&embed=customerStatus",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"Lookup"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134141"
+								},
+								{
+									"key": "orgids",
+									"value": "2190,123,2275,2274"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "source",
+									"value": "INSTORE"
+								},
+								{
+									"key": "embed",
+									"value": "customerStatus"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_points/isredeemable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190"
+							},
+							{
+								"key": "X-CAP-API-OAUTH-TOKEN",
+								"value": "eyJraWQiOiJjb21tb24iLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJDYXBpbGxhcnkiLCJleHAiOjE3MzE0ODE2MjQsImp0aSI6IjctZnB6dUlwMFdoMm5tODBVcmJ3WXciLCJpYXQiOjE3MzE0NzgwODQsInN1YiI6InRlc3QgQVBJIiwiY2xpZW50X2lkIjoxOTk2Nywib3JnX2lkIjoyMTkwLCJ0b2tlbl91c2UiOiJ0b2tlbl9hY2Nlc3MiLCJjbGllbnRfa2V5IjoiVU84dUpRTmx2enZHeUwxYlF3dEpvZDJ4RiIsImRlZmF1bHRfdGlsbCI6MTM1NDczMzgsInNjb3BlcyI6IltdIn0.b4Iowvao1_VTGy5pmt_Dcy2wlwJi1jQEp3tFJOVt5wmkDG9zCj1X1HeCUqlwEsdPeu_Dk8p-Tuima2KdXnlHccqXpgUtICTwsiQxVYdmCn4TMulUHeB6ijXrKHtdCPsgB3i2um-YmP-zj8UFFGbu2jRmDFxGqq9m3mKaiwS-f3bHRIUn0otqUIQzUijAX4xXaKZbc6Jh-lQE1FlQLTKmGeNEh9Ykg1NM9uaB7W5-kTmxSMSi8UyYleCdzoLb6_eyllxezPx3psh_LH8BpLVBIrqc3exx8hlzzhff5_3ossYJAIKrF0N5ZcWNSp_Ib0L-uK5O8AsMNYJuimFUmGwi0g",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isredeem\": [\r\n    {\r\n      \"orgid\": \"2274\",\r\n      \"point\": \"9\"\r\n    },\r\n    {\r\n      \"orgid\": \"2278\",\r\n      \"point\": \"8\"\r\n    },\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"point\": \"12\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/isredeemable?mobile=9605134142",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"isredeemable"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "9605134142"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_points/redeem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pointredeem\": [\r\n    {\r\n      \"mobile\": \"919738104156\",\r\n      \"orgid\": \"2190\",\r\n      \"points\": \"18\",\r\n      \"transaction_number\": \"sa1\"\r\n    },\r\n    {\r\n      \"mobile\": \"919738104156\",\r\n      \"orgid\": \"67890\",\r\n      \"points\": \"18\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/redeem",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"redeem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_points/reverse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pointreverse\": [\r\n    {\r\n      \"orgid\": \"2190\",\r\n      \"pointsToBeReversed\": \"18\",\r\n      \"redemptionId\": \"111ddg77A\"\r\n    },\r\n    {\r\n      \"orgid\": \"67810\",\r\n      \"pointsToBeReversed\": \"18\",\r\n      \"redemptionId\": \"111ddg77A\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/reverse?mobile=919738104156",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"points",
+								"reverse"
+							],
+							"query": [
+								{
+									"key": "mobile",
+									"value": "919738104156"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_Transaction/add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"root\": {\r\n    \"transaction\": [\r\n      {\r\n        \"type\": \"regular\",\r\n        \"number\": \"20241016_001\",\r\n        \"amount\": 70,\r\n        \"billing_time\": \"2024-10-16T14:09:34+05:30\",\r\n        \"gross_amount\": 70,\r\n        \"outlier_status\": \"NORMAL\",\r\n        \"discount\": 0,\r\n        \"customer\": {\r\n          \"mobile\": \"919738104516\"\r\n        },\r\n        \"custom_fields\": {\r\n          \"field\": [\r\n            {\r\n              \"name\": \"source\",\r\n              \"value\": \"FCC\"\r\n            }\r\n          ]\r\n        },\r\n        \"line_items\": {\r\n          \"line_item\": [\r\n            {\r\n              \"serial\": \"1\",\r\n              \"amount\": \"10\",\r\n              \"item_code\": \"1\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"2\",\r\n              \"amount\": \"35\",\r\n              \"item_code\": \"2\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"3\",\r\n              \"amount\": \"25\",\r\n              \"item_code\": \"3\",\r\n              \"qty\": \"1\"\r\n            }\r\n          ]\r\n        },\r\n        \"redemptions\": {\r\n          \"points_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          },\r\n          \"coupon_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/transaction/add?orgids=2190,777,99093",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"add"
+							],
+							"query": [
+								{
+									"key": "orgids",
+									"value": "2190,777,99093"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One_View_transaction/update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "API-KEY",
+								"value": "{{One_View_API_KEY}}"
+							},
+							{
+								"key": "source",
+								"value": "fcc"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "customer-status",
+								"value": "active",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "CT={{CT_Token}}; OID=2190",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"root\": {\r\n    \"transaction\": [\r\n      {\r\n        \"type\": \"regular\",\r\n        \"number\": \"20241016_001\",\r\n        \"amount\": 70,\r\n        \"billing_time\": \"2024-10-16T14:09:34+05:30\",\r\n        \"gross_amount\": 70,\r\n        \"outlier_status\": \"NORMAL\",\r\n        \"discount\": 0,\r\n        \"customer\": {\r\n          \"mobile\": \"919738104516\"\r\n        },\r\n        \"custom_fields\": {\r\n          \"field\": [\r\n            {\r\n              \"name\": \"source\",\r\n              \"value\": \"FCC\"\r\n            }\r\n          ]\r\n        },\r\n        \"line_items\": {\r\n          \"line_item\": [\r\n            {\r\n              \"serial\": \"1\",\r\n              \"amount\": \"10\",\r\n              \"item_code\": \"1\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"2\",\r\n              \"amount\": \"35\",\r\n              \"item_code\": \"2\",\r\n              \"qty\": \"1\"\r\n            },\r\n            {\r\n              \"serial\": \"3\",\r\n              \"amount\": \"25\",\r\n              \"item_code\": \"3\",\r\n              \"qty\": \"1\"\r\n            }\r\n          ]\r\n        },\r\n        \"redemptions\": {\r\n          \"points_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          },\r\n          \"coupon_redemptions\": {\r\n            \"id\": [\r\n              \"\"\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/transaction/update?orgids=2190,777,99093",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"update"
+							],
+							"query": [
+								{
+									"key": "orgids",
+									"value": "2190,777,99093"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "barcode/status",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{One_View_API_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"source\" : \"fixit\", \r\n    \"couponCodes\" : [\"KDD3JY1BHO\"]\r\n}\r\n\r\n\r\n\r\n\r\n\r\n// \"responseParams\":  [\"Status\", \"ExpiryDate\", \"CreatedDate\", \"Points\", \"Price\", \"Quantity\", \"RedeemedDate\", \"SKUCode\", \"StatusCode\"]\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/barcode/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"barcode",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test Cron Jobs",
+			"item": [
+				{
+					"name": "/api/csv-data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/updateBarcodeStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"updateBarcodeStatus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

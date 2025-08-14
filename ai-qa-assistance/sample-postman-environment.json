@@ -1,0 +1,45 @@
+{
+    "id": "9a5c6e8d-bb33-4b43-85a1-259d0b18e876",
+    "name": "QA/UAT",
+    "values": [
+        {
+            "key": "baseUrl",
+            "value": "https://pidiliteapi.psv-psv-facets-psv-qa.capillary-psv.facets.cloud",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "accessToken",
+            "value": "",
+            "type": "any",
+            "enabled": true
+        },
+        {
+            "key": "CLIENT_API_KEY",
+            "value": "f19a64b9-d74e-4308-9181-26562b9e412f",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "B2C_API_KEY",
+            "value": "206a31f0-3384-4e6d-a138-b33987593237",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "One_View_API_KEY",
+            "value": "f2dd8af1-38bf-4f51-b9cb-58ba691f8ac5",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "B2B_API_KEY",
+            "value": "82318c13-f7ef-46a2-92a8-91881c436a83",
+            "type": "default",
+            "enabled": true
+        }
+    ],
+    "_postman_variable_scope": "environment",
+    "_postman_exported_at": "2025-08-08T06:29:50.993Z",
+    "_postman_exported_using": "Postman/11.57.5-250807-0110"
+}
